@@ -1,0 +1,5 @@
+package com.post.project.post.business.post.entity;
+
+public class Post {
+
+}

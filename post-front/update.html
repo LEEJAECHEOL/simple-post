@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post</title>
+    <style>
+      #postForm {
+        display: flex;
+        flex-direction: column;
+      }
+      input,
+      textarea {
+        margin-bottom: 10px;
+        height: 35px;
+        font-size: 16px;
+        padding: 5px 5px;
+      }
+      .btn {
+        border: 0;
+        cursor: pointer;
+        text-decoration: none;
+        color: #fff;
+        background: #1890ff;
+        border-color: #1890ff;
+        width: 80px;
+        padding: 10px 0 8px;
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="postForm">
+      <input type="text" name="title" placeholder="제목을 입력해주세요." />
+      <textarea name="content" placeholder="내용을 입력해주세요."></textarea>
+      <button type="button" onclick="submitPost()" class="btn">수정</button>
+    </form>
+    <script>
+      const url = "http://localhost:8080";
+      const currentUrl = new URL(window.location.href);
+      const urlParams = currentUrl.searchParams;
+      const id = urlParams.get("id");
+      const form = document.querySelector("#postForm");
+
+      window.addEventListener("DOMContentLoaded", () => {
+        if (id === null) {
+          alert("잘못된 접근입니다.");
+          location.href = "/index.html";
+        } else {
+          fetch(url + "/post/" + id)
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.status === 200) {
+                form.title.value = data.data.title;
+                form.content.value = data.data.content;
+              } else {
+                alert("해당 게시물은 존재하지 않습니다.");
+                location.href = "/index.html";
+              }
+            });
+        }
+      });
+      function submitPost() {
+        let data = {
+          title: form.title.value,
+          content: form.content.value,
+        };
+        if (!checkEmpty(data.title) && !checkEmpty(data.content)) {
+          fetch(url + "/post/" + id, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.status === 200) {
+                location.href = "/index.html";
+              }
+            });
+        } else {
+          alert("제목 또는 내용을 입력해주세요.");
+        }
+      }
+      function checkEmpty(text) {
+        if (text === "" || text === null) {
+          return true;
+        }
+        return false;
+      }
+    </script>
+  </body>
+</html>

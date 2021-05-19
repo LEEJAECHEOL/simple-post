@@ -1,0 +1,5 @@
+package com.post.project.common.error.response;
+
+public class ErrorResponse {
+
+}

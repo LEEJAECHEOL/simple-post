@@ -1,0 +1,10 @@
+package com.post.project.post.business.post.application;
+
+import org.springframework.stereotype.Service;
+
+import com.post.project.post.business.post.entity.Post;
+
+@Service
+public class PostService {
+	
+}

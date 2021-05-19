@@ -1,0 +1,5 @@
+package com.post.project.post.common.error.exception;
+
+public class BusinessException {
+
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post</title>
+    <style>
+      .post_container {
+        border: 1px solid rgba(0, 0, 0, 0.4);
+        margin: 10px;
+        padding: 10px;
+        border-radius: 3px;
+      }
+      .btn {
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        background: #1890ff;
+        border-color: #1890ff;
+        width: 80px;
+        padding: 10px 0 8px;
+        border-radius: 3px;
+      }
+      .btn:hover {
+        opacity: 0.8;
+      }
+      .update_btn {
+        background: #faad14;
+        border-color: #faad14;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="/write.html" class="btn write_btn">글작성</a>
+    <div id="root"></div>
+    <script>
+      const url = "http://localhost:8080";
+      window.addEventListener("DOMContentLoaded", () => {
+        const root = document.querySelector("#root");
+        fetch(url + "/post")
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.status === 200) {
+              let content = "";
+              for (let post of data.data) {
+                content += `
+                  <div class="post_container">
+                    <h2>${post.title}</h2>
+                    <p>${post.content}</p>
+                    <a href="/update.html?id=${post.id}"  class="btn update_btn">수정하기</a>
+                  </div>
+                `;
+              }
+              root.innerHTML = content;
+            }
+          });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+package com.post.project.post.business.post.api;
+
+import javax.validation.Valid;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.post.project.post.business.post.application.PostService;
+import com.post.project.post.business.post.form.PostForm.*;
+
+import lombok.RequiredArgsConstructor;
+
+@RestController
+@RequiredArgsConstructor
+public class PostController {
+	
+	
+	private static final Logger log = LoggerFactory.getLogger(PostController.class);
+
+	
+	private final PostService postService;
+	
+	@PostMapping("/post")
+	public void save(@Valid @RequestBody Request.Save save) {
+		log.info(save);
+	}
+
+}

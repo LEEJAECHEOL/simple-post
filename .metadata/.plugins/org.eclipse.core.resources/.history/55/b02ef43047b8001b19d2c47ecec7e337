@@ -1,0 +1,5 @@
+package com.post.project.post.common.error.handler;
+
+public class GlobalExceptionHandler {
+
+}

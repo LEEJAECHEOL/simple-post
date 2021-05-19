@@ -1,0 +1,15 @@
+package com.post.project.post.business.post.application;
+
+import org.springframework.stereotype.Service;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class PostService {
+	
+	private final PostRepository postRepository;
+	
+	
+	
+}

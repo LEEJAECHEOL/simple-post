@@ -1,0 +1,5 @@
+package com.post.project.post.business.post.api;
+
+public class PostController {
+
+}
