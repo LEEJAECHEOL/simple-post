@@ -15,7 +15,6 @@ public class PostForm {
 		@Getter
 		@Setter
 		@NoArgsConstructor
-		@ToString
 		public static class Save{
 			@NotBlank(message = "제목을 입력해주세요.")
 			private String title;
@@ -32,7 +31,6 @@ public class PostForm {
 		@Getter
 		@Setter
 		@NoArgsConstructor
-		@ToString
 		public static class Update{
 			@NotBlank(message = "제목을 입력해주세요.")
 			private String title;

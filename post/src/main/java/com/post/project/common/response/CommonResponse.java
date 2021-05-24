@@ -1,7 +1,5 @@
 package com.post.project.common.response;
 
-import com.post.project.common.error.code.ErrorCode;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
