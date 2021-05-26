@@ -31,7 +31,7 @@ public class PostController {
 	private final PostService postService;
 	
 	@GetMapping("/post")
-	public ResponseEntity<?> findAll(){
+	public ResponseEntity<CommonResponse> findAll(){
 		List<Post> postEntity = postService.findAll();
 		log.info("Post 전체 가져오기");
 		
@@ -40,7 +40,7 @@ public class PostController {
 	}
 	
 	@GetMapping("/post/{id}")
-	public ResponseEntity<?> findById(@PathVariable Long id){
+	public ResponseEntity<CommonResponse> findById(@PathVariable Long id){
 		Post postEntity = postService.findById(id);
 		log.info("Post id : " + id + " 가져오기");
 		return ResponseEntity.status(HttpStatus.OK)
@@ -48,7 +48,7 @@ public class PostController {
 	}
 	
 	@PostMapping("/post")
-	public ResponseEntity<?> save(@Valid @RequestBody Request.Save save) {
+	public ResponseEntity<CommonResponse> save(@Valid @RequestBody Request.Save save) {
 		Post postEntity = postService.save(save.toEntity());
 		log.info("Post id : " + postEntity.getId() + " 저장");
 		return ResponseEntity.status(HttpStatus.CREATED)
@@ -56,7 +56,7 @@ public class PostController {
 	}
 	
 	@PutMapping("/post/{id}")
-	public ResponseEntity<?> updateById(@PathVariable Long id, @RequestBody Request.Update update){
+	public ResponseEntity<CommonResponse> updateById(@PathVariable Long id, @RequestBody Request.Update update){
 		Post postEntity = postService.updateById(id, update.toEntity());
 		log.info("Post id : " + postEntity.getId() + " 수정");
 		return ResponseEntity.status(HttpStatus.OK)

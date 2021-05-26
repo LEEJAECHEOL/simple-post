@@ -22,7 +22,7 @@ import lombok.Getter;
 @MappedSuperclass
 @Getter
 public class BasicEntity {
-	@CreatedDate // entity가 생성될 때 시간을 넣어줌
+	  @CreatedDate // entity가 생성될 때 시간을 넣어줌
     private LocalDateTime createdDate;
     @LastModifiedDate // entity가 수정될 때 시간을 넣어줌.
     private LocalDateTime updatedDate;

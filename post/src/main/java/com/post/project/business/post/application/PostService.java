@@ -37,8 +37,7 @@ public class PostService {
 	public Post updateById(Long id, Post post) {
 		Post postEntity = postRepository.findById(id)
 							.orElseThrow(() -> new BusinessException(ErrorCode.NOT_FOUND_POST));
-		postEntity.setTitle(post.getTitle());
-		postEntity.setContent(post.getContent());
+		postEntity.updatePost(post.getTitle(), post.getContent());
 		return postEntity;
 	}
 	

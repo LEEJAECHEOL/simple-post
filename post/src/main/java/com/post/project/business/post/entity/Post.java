@@ -15,7 +15,6 @@ import lombok.Setter;
 
 @Entity
 @Getter
-@Setter
 @NoArgsConstructor
 public class Post extends BasicEntity {
     @Id
@@ -31,5 +30,10 @@ public class Post extends BasicEntity {
     	this.id = id;
     	this.title = title;
     	this.content = content;
+    }
+
+    public void updatePost(String title, String content){
+      this.title = title;
+      this.content = content;
     }
 }

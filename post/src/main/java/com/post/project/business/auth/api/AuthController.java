@@ -19,7 +19,7 @@ public class AuthController {
   private final AuthService authService;
 
   @PostMapping("/join")
-  public ResponseEntity<?> join(@Valid @RequestBody AuthForm.Request.Join join){
+  public ResponseEntity<CommonResponse> join(@Valid @RequestBody AuthForm.Request.Join join){
     authService.join(join.toEntity());
     return ResponseEntity.status(HttpStatus.CREATED)
       .body(new CommonResponse<>(HttpStatus.CREATED.value(), "회원가입을 성공하였습니다.", ""));

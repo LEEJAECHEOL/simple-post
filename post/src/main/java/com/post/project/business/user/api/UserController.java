@@ -18,7 +18,7 @@ public class UserController {
   private final UserService userService;
 
   @GetMapping("/checkUsername")
-  public ResponseEntity<?> checkUsername(String username){
+  public ResponseEntity<CommonResponse> checkUsername(String username){
     int isUseEmail = userService.findByUsername(username);
     if(USE_EMAIL == isUseEmail){
       return ResponseEntity.status(HttpStatus.BAD_REQUEST)
